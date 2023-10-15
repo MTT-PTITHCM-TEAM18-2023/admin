@@ -9,9 +9,9 @@ const vn = {
   },
   CategoryList: {
     Edit: {
-      successBar: "Cập nhật thành công",
-      errorBar: "Cập nhật thất bại"
-    }
+      successBar: 'Cập nhật thành công',
+      errorBar: 'Cập nhật thất bại',
+    },
   },
   navTitle: {
     event: {

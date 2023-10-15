@@ -1,5 +1,5 @@
-import {ElementType, lazy, Suspense} from 'react';
-import {Navigate, useLocation, useRoutes} from 'react-router-dom';
+import { ElementType, lazy, Suspense } from 'react';
+import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 // hooks
 import useAuth from '../hooks/useAuth';
 // layouts
@@ -11,7 +11,7 @@ import GuestGuard from '../guards/GuestGuard';
 // config
 // components
 import LoadingScreen from '../components/LoadingScreen';
-import {PATH_DASHBOARD} from './paths';
+import { PATH_DASHBOARD } from './paths';
 
 // ----------------------------------------------------------------------
 
@@ -174,8 +174,6 @@ const CreateProductContainer = Loadable(
 
 // Category
 const CategoryListContainer = Loadable(
-    lazy(() => import('src/category/list-category/index'))
+  lazy(() => import('src/category/list-category/index'))
 );
-const EditCategoryContainer = Loadable(
-    lazy(() => import('src/category/edit/index'))
-);
+const EditCategoryContainer = Loadable(lazy(() => import('src/category/edit/index')));

@@ -1,5 +1,5 @@
 // routes
-import {PATH_DASHBOARD} from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import Iconify from 'src/common/components/Iconify';
 import SvgIconStyle from '../../../components/SvgIconStyle';

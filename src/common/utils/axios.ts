@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { toQueryString } from 'src/common/constants/common.utils';
 import { setAccessToken } from '../../auth/login/auth.slice';
 import { setIsExpired } from '../../auth/login/login.slice';
@@ -12,7 +11,7 @@ import { PATH_AUTH } from '../routes/paths';
 
 const axiosInstance = axios.create({
   baseURL: HOST_API,
-  paramsSerializer:(param) => toQueryString(param),
+  paramsSerializer: (param) => toQueryString(param),
 });
 const axiosInstance2 = axios.create({
   baseURL: HOST_API,
@@ -22,17 +21,18 @@ axiosInstance.interceptors.response.use(
   (error) => {
     const { response } = error;
     const refreshToken = store.getState()?.authLogin.refreshToken;
-    if (response?.status === 401  ) {
-      axiosInstance2.post<any, { accessToken: string }>('/merchant/auth/refresh-token', {
-        refreshToken: refreshToken
-      })
-        .then((res:any) => {
+    if (response?.status === 401) {
+      axiosInstance2
+        .post<any, { accessToken: string }>('/merchant/auth/refresh-token', {
+          refreshToken: refreshToken,
+        })
+        .then((res: any) => {
           store.dispatch(setAccessToken('Bearer ' + res?.data?.accessToken));
-        }) 
-        .catch((e)=>{
+        })
+        .catch((e) => {
           store.dispatch(setIsExpired(true));
           window.location.href = PATH_AUTH.login;
-        })
+        });
     }
     return Promise.reject(error);
   }
